@@ -1,4 +1,11 @@
+keyMap = [
+	58, 59, 60, 62, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 186, 188, 190, 191, 192, 219, 221, 222
+];
 hebrewMap = {
+	58: 'ף', //firefox
+	59: 'ף', //firefox
+	60: 'ץ', //firefox
+	62: 'ת', //firefox
 	65: 'ש',
 	66: 'נ',
 	67: 'ב',
@@ -33,8 +40,12 @@ hebrewMap = {
 	219: ']',
 	221: '[',
 	222: ','
-}
+};
 englishMap = {
+	58: ';', //firefox
+	59: ';', //firefox
+	60: '.', //firefox
+	62: ',', //firefox
 	186: ';',
 	188: ',',
 	190: '.',
@@ -43,11 +54,11 @@ englishMap = {
 	219: '[',
 	221: ']',
 	222: '\''
-}
+};
 
 function forceHebrew(e) {
 	var key = e.keyCode || e.whish;
-	if (hebrewMap[key] && !e.ctrlKey && !e.altKey) {
+	if (keyMap.indexOf(key) > 0 && !e.ctrlKey && !e.altKey) {
 		e.preventDefault();
 		e.target.value += hebrewMap[key]; // || key;
 		console.log('key -> ' + key);
@@ -56,7 +67,7 @@ function forceHebrew(e) {
 
 function forceEnglish(e) {
 	var key = e.keyCode || e.whish;
-	if (hebrewMap[key] && !e.ctrlKey && !e.altKey) {
+	if (keyMap.indexOf(key) > 0 && !e.ctrlKey && !e.altKey) {
 		e.preventDefault();
 		e.target.value += englishMap[key] || String.fromCharCode(key).toLowerCase();
 		console.log('key -> ' + key);
@@ -65,7 +76,7 @@ function forceEnglish(e) {
 
 function forceEnglishUppercase(e) {
 	var key = e.keyCode || e.whish;
-	if (hebrewMap[key] && !e.ctrlKey && !e.altKey) {
+	if (keyMap.indexOf(key) > 0 && !e.ctrlKey && !e.altKey) {
 		e.preventDefault();
 		e.target.value += englishMap[key] || String.fromCharCode(key);
 		console.log('key -> ' + key);
